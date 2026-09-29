@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sega Genesis - abc2</title>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      overflow: hidden;
+    }
+    #game {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="game"></div>
+
+  <script>
+    EJS_player = '#game';
+    EJS_core = 'segaMD';     // Sets engine to Sega Genesis / Mega Drive
+    EJS_gameUrl = 'abc2.zip'; // Matches your zipped Genesis ROM file name
+    EJS_pathtodata = 'data/';
+  </script>
+  <script src="data/loader.js"></script>
+
+</body>
+</html>
