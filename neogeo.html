@@ -30,13 +30,17 @@
         EJS_biosUrl = 'neogeo.zip';              // Neo Geo BIOS file
         EJS_pathtodata = 'data/';                // EmulatorJS assets directory
 
-        // Netplay Configuration (Active Community Server)
-        EJS_netplayUrl = 'wss://netplay.ejs.host'; 
+        // Correct Netplay Configuration
+        EJS_netplayServer = 'wss://netplay.ejs.host'; 
         EJS_gameID = 12345;                       // Unique numeric ID
 
-        // Buttons Configuration
+        // Force UI Settings
+        EJS_defaultSettings = {
+            'netplay-button': 'true'
+        };
+
         EJS_buttons = {
-            netplay: true                         
+            netplay: true
         };
     </script>
     <script src="data/loader.js"></script>
