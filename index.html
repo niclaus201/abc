@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>GBA Emulator Channel</title>
+  <title>Multi-System Emulator Channel</title>
   <style>
     html, body {
       width: 100%;
@@ -23,24 +23,53 @@
   <div id="game"></div>
 
   <script>
-    // 1. Set up the display target container and core type
+    // 1. Set up the display target container
     EJS_player = '#game';
-    EJS_core = 'gba'; // Keeps the core strictly on GBA to avoid errors!
 
     // 2. Read the browser URL parameters to figure out which game to load
     const urlParams = new URLSearchParams(window.location.search);
     const gameChoice = urlParams.get('game');
 
-    // 3. The Multi-Game Router System
+    // 3. The Multi-System Router Layout
     if (gameChoice === 'toystory') {
-        EJS_gameUrl = 'roms/Toy Story Racer.gba'; // Your converted Toy Story file
+        EJS_core = 'gba';
+        EJS_gameUrl = 'roms/Toy Story Racer.gba'; 
         
     } else if (gameChoice === 'finalfantasy') {
-        EJS_gameUrl = 'final'; // 🌟 Matches your exact Final Fantasy file name!
+        EJS_core = 'gba';
+        EJS_gameUrl = 'final'; 
+        
+    } else if (gameChoice === 'abc1') {
+        EJS_core = 'gba';
+        EJS_gameUrl = 'abc1.zip'; // Maps your Mario / GBA game file
+        
+    } else if (gameChoice === 'abc2') {
+        EJS_core = 'gba';
+        EJS_gameUrl = 'abc2.zip'; // Maps your second GBA game file
+        
+    } else if (gameChoice === 'genesis') {
+        EJS_core = 'genesisPlusPlus'; // 🌀 Switches backend system to the Sega Genesis Core!
+        EJS_gameUrl = 'genesis';      // Matches your exact Genesis file name
+        
+    } else if (gameChoice === 'metalslug') {
+        EJS_core = 'fbneo'; 
+        EJS_gameUrl = 'roms/mslug.zip'; 
+        EJS_biosUrl = 'roms/neogeo.zip'; 
+        
+    } else if (gameChoice === 'metalslug5') {
+        EJS_core = 'fbneo'; 
+        EJS_gameUrl = 'roms/mslug5.zip'; 
+        EJS_biosUrl = 'roms/neogeo.zip'; 
+        
+    } else if (gameChoice === 'metalslug6') {
+        EJS_core = 'flycast'; 
+        EJS_gameUrl = 'roms/mslug6.zip'; 
+        EJS_biosUrl = 'roms/awbios.zip'; 
         
     } else {
-        // Default game if no custom parameter is added to the link
-        EJS_gameUrl = 'abc1.zip'; // Your Mario game file name
+        // Fallback default game if no parameter is passed via the link string
+        EJS_core = 'gba';
+        EJS_gameUrl = 'abc1.zip'; 
     }
 
     // 4. Force core asset routing via the cloud CDN network 
