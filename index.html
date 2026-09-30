@@ -34,24 +34,24 @@
   </div>
 
   <script>
-    // 1. Define the viewport target container
+    // 1. Establish the viewport container selector
     EJS_player = '#game';
     
-    // 2. Set the target system runtime profile to GBA
+    // 2. Set the target emulation architecture profile to Game Boy Advance
     EJS_core = 'gba';                 
 
-    // 3. Point directly to your active game file sitting in your root folder
+    // 3. CRITICAL: Point exactly to your root game file matching lowercase extensions
     EJS_gameUrl = 'abc.zip';         
 
-    // 4. Force player behaviors to initialize immediately upon loading completion
+    // 4. Force the execution environment to execute natively upon asset delivery
     EJS_startOnLoaded = true;
 
-    // 5. Route asset requests to the cloud network to bypass local file errors
-    EJS_pathtodata = 'https://emulatorjs.org';         
+    // 5. Route critical core downloads safely from the stable public CDN
+    EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';         
   </script>
   
-  <!-- Loads the stable web player core script framework from the server mirror link -->
-  <script src="https://emulatorjs.orgloader.js"></script>
+  <!-- 6. CRITICAL: The loader script MUST be loaded at the very bottom, after our configuration variables -->
+  <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
 
 </body>
 </html>
