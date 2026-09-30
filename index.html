@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>GBA Arcade</title>
+  <title>GBA Arcade Channel</title>
   <style>
     body, html {
       margin: 0;
@@ -11,15 +11,16 @@
       height: 100%;
       background-color: #000;
       display: flex;
-      flex-direction: column; /* Stack menu above the game container */
+      flex-direction: column; /* Places the menu bar safely above the game */
       justify-content: center;
       align-items: center;
-      font-family: sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
     }
     #menu-bar {
       width: 100%;
       background-color: #111;
-      padding: 10px 0;
+      padding: 12px 0;
       text-align: center;
       border-bottom: 2px solid #222;
       z-index: 100;
@@ -28,24 +29,31 @@
       color: #fff;
       font-weight: bold;
       margin-right: 10px;
+      font-size: 15px;
     }
     #game-selector {
-      padding: 6px 12px;
+      padding: 6px 14px;
       font-size: 14px;
       background-color: #222;
       color: #fff;
       border: 1px solid #444;
       border-radius: 4px;
       cursor: pointer;
+      font-weight: bold;
+      outline: none;
+      transition: border-color 0.2s ease-in-out;
     }
     #game-selector:hover {
       border-color: #ffcc00;
     }
     #game-container {
       width: 100%;
-      height: calc(100% - 50px); /* Subtract menu bar height */
+      height: calc(100% - 50px); /* Subtracts the menu bar height to maintain perfect scale */
       max-width: 960px;
       max-height: 640px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     #game {
       width: 100%;
@@ -55,7 +63,7 @@
 </head>
 <body>
 
-  <!-- 1. Selection Menu Banner -->
+  <!-- 1. The Interactive Dropdown Menu Bar Layout -->
   <div id="menu-bar">
     <label for="game-selector">Select Game:</label>
     <select id="game-selector">
@@ -65,36 +73,43 @@
     </select>
   </div>
 
-  <!-- 2. Screen Window Container -->
+  <!-- 2. The Fullscreen Emulator Window Viewport Container -->
   <div id="game-container">
     <div id="game"></div>
   </div>
 
+  <!-- 3. The Core Script Engine Context Setup Configuration -->
   <script>
-    // Read parameters from URL to allow direct linking if needed
+    // Read the query parameters directly out of the active browser address bar
     const urlParams = new URLSearchParams(window.location.search);
     const initialGame = urlParams.get('game');
     const selector = document.getElementById('game-selector');
 
-    // Auto-set the dropdown value based on URL parameters
+    // Keep the visible selection box matched perfectly to the running game track
     if (initialGame === 'abc1') selector.value = 'abc1.zip';
     else if (initialGame === 'abc2') selector.value = 'abc2.zip';
     else selector.value = 'abc.zip';
 
-    // Global EmulatorJS variables setup
+    // Map configuration targets into the dynamic loader engine global variables
     EJS_player = '#game';
     EJS_core = 'gba'; 
-    EJS_gameUrl = selector.value; // Loads chosen entry from selection dropdown
+    EJS_gameUrl = selector.value; // Instantly serves whichever game file text string is current
     EJS_startOnLoaded = true;
+
+    // Force system framework assets to stream down safely from the official cloud mirrors
     EJS_pathtodata = 'https://emulatorjs.org';
 
-    // Trigger reload when user selects a different game from dropdown menu
+    // Listen for dropdown changes, clear browser history states, and launch cleanly
     selector.addEventListener('change', function() {
         let cleanName = this.value.replace('.zip', '');
-        window.location.href = window.location.origin + window.location.pathname + '?game=' + cleanName;
+        let targetUrl = window.location.origin + window.location.pathname + '?game=' + cleanName;
+        
+        // Force the browser tab to discard memory and boot the selected core completely fresh
+        window.location.replace(targetUrl);
     });
   </script>
   
+  <!-- Loads the stable web player core script framework from the server mirror link -->
   <script src="https://emulatorjs.orgloader.js"></script>
 
 </body>
