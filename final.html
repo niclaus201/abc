@@ -23,13 +23,16 @@
   <div id="game"></div>
 
   <script>
-    // 1. Declare configuration variables before the loading script fires
-     EJS_player = '#game';
-     EJS_core = 'gba'; 
-     EJS_gameUrl = 'final.zip'; 
-     EJS_pathtodata = 'data/';
+    EJS_player = '#game';
+    EJS_core = 'gba';                 // 🌟 Changed: Sets engine to Game Boy Advance
+    EJS_gameUrl = 'final.zip';        // 🌟 Changed: Matches your zipped Final Fantasy file name
+    
+    // 🚀 CRITICAL FIX: Pulls the GBA core from the cloud since your local data/ folder only has Sega cores
+    EJS_pathtodata = 'https://emulatorjs.org';
   </script>
-  <script src="data/loader.js"></script>
+  
+  <!-- 🚀 CRITICAL FIX: Loads the web player framework from the stable cloud mirror -->
+  <script src="https://emulatorjs.orgloader.js"></script>
 
 </body>
 </html>
