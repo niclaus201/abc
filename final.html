@@ -24,15 +24,16 @@
 
   <script>
     EJS_player = '#game';
-    EJS_core = 'gba';                 // Sets engine core to Game Boy Advance
-    EJS_gameUrl = 'final.zip';        // Direct path link to your working game file
-    
-    // 🚀 FIXED: Point to the cloud asset mirror to bypass your missing GBA core files
-    EJS_pathtodata = 'https://emulatorjs.org';
+    EJS_core = 'gba';                 // Targets the mGBA player framework
+    EJS_gameUrl = 'final.zip';        // References your physical game archive file
+    EJS_startOnLoaded = true;
+
+    // 🚀 THE CRITICAL FIX: Pull the GBA cores from the cloud to prevent local path 404 crashes!
+    EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
   </script>
   
-  <!-- 🚀 FIXED: Load the main player engine script framework from the stable cloud mirror -->
-  <script src="https://emulatorjs.orgloader.js"></script>
+  <!-- 🚀 FIXED: Load the player engine logic cleanly from the cloud mirror network -->
+  <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
 
 </body>
 </html>
