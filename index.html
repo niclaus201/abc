@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Multi-System Emulator Channel</title>
+  <title>GBA & Arcade Emulator Channel</title>
   <style>
     html, body {
       width: 100%;
@@ -30,44 +30,44 @@
     const urlParams = new URLSearchParams(window.location.search);
     const gameChoice = urlParams.get('game');
 
-    // 3. The Multi-System Router Layout
+    // 3. The Multi-Game Router System (No sub-folders, everything in root!)
     if (gameChoice === 'toystory') {
         EJS_core = 'gba';
-        EJS_gameUrl = 'roms/Toy Story Racer.gba'; 
+        EJS_gameUrl = 'Toy Story Racer.gba'; // Located in the main folder
         
     } else if (gameChoice === 'finalfantasy') {
         EJS_core = 'gba';
-        EJS_gameUrl = 'final'; 
+        EJS_gameUrl = 'final'; // Matches your exact file name "final" in the main folder
         
     } else if (gameChoice === 'abc1') {
         EJS_core = 'gba';
-        EJS_gameUrl = 'abc1.zip'; // Maps your Mario / GBA game file
+        EJS_gameUrl = 'abc1.zip'; // Matches your Mario zip file in the main folder
         
     } else if (gameChoice === 'abc2') {
         EJS_core = 'gba';
-        EJS_gameUrl = 'abc2.zip'; // Maps your second GBA game file
+        EJS_gameUrl = 'abc2.zip'; // Matches your second GBA file in the main folder
         
     } else if (gameChoice === 'genesis') {
-        EJS_core = 'genesisPlusPlus'; // 🌀 Switches backend system to the Sega Genesis Core!
-        EJS_gameUrl = 'genesis';      // Matches your exact Genesis file name
+        EJS_core = 'genesisPlusPlus';
+        EJS_gameUrl = 'genesis'; // Matches your Genesis file in the main folder
         
     } else if (gameChoice === 'metalslug') {
         EJS_core = 'fbneo'; 
-        EJS_gameUrl = 'roms/mslug.zip'; 
-        EJS_biosUrl = 'roms/neogeo.zip'; 
+        EJS_gameUrl = 'mslug.zip'; // Arcade zip file in the main folder
+        EJS_biosUrl = 'neogeo.zip'; // BIOS file in the main folder
         
     } else if (gameChoice === 'metalslug5') {
         EJS_core = 'fbneo'; 
-        EJS_gameUrl = 'roms/mslug5.zip'; 
-        EJS_biosUrl = 'roms/neogeo.zip'; 
+        EJS_gameUrl = 'mslug5.zip'; // Arcade zip file in the main folder
+        EJS_biosUrl = 'neogeo.zip'; // BIOS file in the main folder
         
     } else if (gameChoice === 'metalslug6') {
         EJS_core = 'flycast'; 
-        EJS_gameUrl = 'roms/mslug6.zip'; 
-        EJS_biosUrl = 'roms/awbios.zip'; 
+        EJS_gameUrl = 'mslug6.zip'; 
+        EJS_biosUrl = 'awbios.zip'; 
         
     } else {
-        // Fallback default game if no parameter is passed via the link string
+        // Default fallback game if no parameter is passed in the URL link string
         EJS_core = 'gba';
         EJS_gameUrl = 'abc1.zip'; 
     }
