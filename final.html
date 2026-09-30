@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Final Fantasy - GBA</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    #game-container {
+      width: 100%;
+      height: 100%;
+      max-width: 960px;
+      max-height: 640px;
+    }
+    #game {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="game-container">
+    <div id="game"></div>
+  </div>
+
+  <script>
+    EJS_player = '#game';
+    EJS_core = 'gba';                 // Loads the GBA core
+    EJS_gameUrl = 'final';            // 🌟 Matches your exact file name "final" in the root folder
+    EJS_startOnLoaded = true;
+
+    // Safely routes the system engine cores from the cloud to avoid black screens
+    EJS_pathtodata = 'https://emulatorjs.org';         
+  </script>
+  
+  <script src="https://emulatorjs.orgloader.js"></script>
+
+</body>
+</html>
