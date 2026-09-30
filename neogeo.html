@@ -25,19 +25,18 @@
 
     <script type="text/javascript">
         EJS_player = '#game';
-        EJS_core = 'mame2003';                   // Core updated for Netplay support
+        EJS_core = 'mame2003';                   // Core supporting Netplay
         EJS_gameUrl = 'ssideki.zip';              // Your Neo Geo ROM
         EJS_biosUrl = 'neogeo.zip';              // Neo Geo BIOS file
         EJS_pathtodata = 'data/';                // EmulatorJS assets directory
 
-        // Netplay Configuration
-        EJS_netplayUrl = 'wss://netplay.emulatorjs.org'; // Official Relay Server
-        EJS_gameUrl = 'ssideki.zip';              // Required for Netplay room identification
-        EJS_gameID = 12345;                       // MUST be a numeric ID for Netplay to activate
+        // Netplay Configuration (Active Community Server)
+        EJS_netplayUrl = 'wss://netplay.ejs.host'; 
+        EJS_gameID = 12345;                       // Unique numeric ID
 
         // Buttons Configuration
         EJS_Buttons = {
-            netplay: true                         // Force Netplay icon in toolbar
+            netplay: true                         
         };
     </script>
     <script src="data/loader.js"></script>
