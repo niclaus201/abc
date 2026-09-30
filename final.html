@@ -35,11 +35,17 @@
 
   <script>
     EJS_player = '#game';
-    EJS_core = 'gba';                 // Loads the GBA core
-    EJS_gameUrl = 'final.zip';        // 🌟 Fixed: Matches your exact filename "final.zip"
+    EJS_core = 'gba';                 
     EJS_startOnLoaded = true;
 
-    // Routes the engine safely from the cloud to prevent black screens
+    // 🌟 PATH DIRECTORY STRINGS
+    // If your file sits in the main root directory, use this link value:
+    EJS_gameUrl = 'final.zip';        
+
+    // If your file sits inside a "roms" subfolder, change it to this value instead:
+    // EJS_gameUrl = 'roms/final.zip';        
+
+    // Force system configurations through the stable asset mirror network
     EJS_pathtodata = 'https://emulatorjs.org';         
   </script>
   
