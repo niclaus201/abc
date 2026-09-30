@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Sidekicks</title>
+    <title>Super Sidekicks - 2 Player</title>
     <style>
         body, html {
             margin: 0;
@@ -25,10 +25,14 @@
 
     <script type="text/javascript">
         EJS_player = '#game';
-        EJS_core = 'fbneo';          // Arcade/Neo Geo core
-        EJS_gameUrl = 'ssideki.zip';  // Your Neo Geo ROM
-        EJS_biosUrl = 'neogeo.zip';  // Required Neo Geo BIOS file
-        EJS_pathtodata = 'data/';    // Path to your EmulatorJS data files
+        EJS_core = 'fbneo';                        // Neo Geo core
+        EJS_gameUrl = 'ssideki.zip';                // Your Neo Geo ROM
+        EJS_biosUrl = 'neogeo.zip';                // Neo Geo BIOS file
+        EJS_pathtodata = 'data/';                  // EmulatorJS assets directory
+
+        // Netplay Configuration
+        EJS_netplayUrl = 'wss://netplay.emulatorjs.org'; // Public Netplay Server
+        EJS_gameID = 'ssideki';                       // Room matching ID
     </script>
     <script src="data/loader.js"></script>
 
