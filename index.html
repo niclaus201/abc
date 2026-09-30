@@ -13,6 +13,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
     #game-container {
       width: 100%;
@@ -33,22 +34,23 @@
   </div>
 
   <script>
+    // 1. Define the viewport target container
     EJS_player = '#game';
-    EJS_core = 'gba';                 // Loads the mGBA core [1]
+    
+    // 2. Set the target system runtime profile to GBA
+    EJS_core = 'gba';                 
+
+    // 3. Point directly to your active game file sitting in your root folder
+    EJS_gameUrl = 'abc.zip';         
+
+    // 4. Force player behaviors to initialize immediately upon loading completion
     EJS_startOnLoaded = true;
 
-    // 🌟 CHOOSE THE RIGHT OPTION FOR YOUR FILENAME BELOW:
-    // Option A: If your file on GitHub is named "abc.zip" use this line:
-    EJS_gameUrl = 'abc.zip';         
-    
-    // Option B: If your file on GitHub is just named "abc" with NO extension, uncomment this line:
-    // EJS_gameUrl = 'abc';         
-
-    // 🚀 FIXED: Pull the system engine cores from the official cloud CDN [1]
+    // 5. Route asset requests to the cloud network to bypass local file errors
     EJS_pathtodata = 'https://emulatorjs.org';         
   </script>
   
-  <!-- 🚀 FIXED: Load the main player library code script from the cloud mirror -->
+  <!-- Loads the stable web player core script framework from the server mirror link -->
   <script src="https://emulatorjs.orgloader.js"></script>
 
 </body>
