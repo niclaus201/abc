@@ -13,17 +13,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
     }
     #game-container {
       width: 100%;
       height: 100%;
       max-width: 960px;
       max-height: 640px;
-    }
-    #game {
-      width: 100%;
-      height: 100%;
     }
   </style>
 </head>
@@ -34,24 +29,13 @@
   </div>
 
   <script>
-    // 1. Establish the viewport container selector
     EJS_player = '#game';
-    
-    // 2. Set the target emulation architecture profile to Game Boy Advance
-    EJS_core = 'gba';                 
-
-    // 3. CRITICAL: Point exactly to your root game file matching lowercase extensions
-    EJS_gameUrl = 'abc.zip';         
-
-    // 4. Force the execution environment to execute natively upon asset delivery
+    EJS_gameUrl = 'abc.zip';         // Links directly to your ROM file
+    EJS_core = 'gba';                 // Loads the mGBA core
+    EJS_pathtodata = 'data/';         // Points to the engine folder
     EJS_startOnLoaded = true;
-
-    // 5. Route critical core downloads safely from the stable public CDN
-    EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';         
   </script>
-  
-  <!-- 6. CRITICAL: The loader script MUST be loaded at the very bottom, after our configuration variables -->
-  <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+  <script src="data/loader.js"></script>
 
 </body>
 </html>
