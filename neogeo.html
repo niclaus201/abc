@@ -25,16 +25,17 @@
 
     <script type="text/javascript">
         EJS_player = '#game';
-        EJS_core = 'arcade';                     // Use generic Arcade core for NeoGeo BIOS compatibility
+        EJS_core = 'arcade';                     // Core for NeoGeo BIOS compatibility
         EJS_gameUrl = 'ssideki.zip';              // Your Neo Geo ROM
         EJS_biosUrl = 'neogeo.zip';              // Neo Geo BIOS file
         EJS_pathtodata = 'data/';                // EmulatorJS assets directory
 
-        // Netplay Configuration
+        // Enable Netplay Mode
+        EJS_netplay = true;                      // Force-enables Netplay mode globally
         EJS_netplayUrl = 'wss://netplay.ejs.host'; 
         EJS_gameID = 'ssideki';
 
-        // Force Netplay Button
+        // Interface Buttons
         EJS_buttons = {
             netplay: true
         };
