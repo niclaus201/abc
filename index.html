@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>abc</title>
+  <title>GBA Arcade</title>
   <style>
     body, html {
       margin: 0;
@@ -11,12 +11,39 @@
       height: 100%;
       background-color: #000;
       display: flex;
+      flex-direction: column; /* Stack menu above the game container */
       justify-content: center;
       align-items: center;
+      font-family: sans-serif;
+    }
+    #menu-bar {
+      width: 100%;
+      background-color: #111;
+      padding: 10px 0;
+      text-align: center;
+      border-bottom: 2px solid #222;
+      z-index: 100;
+    }
+    #menu-bar label {
+      color: #fff;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    #game-selector {
+      padding: 6px 12px;
+      font-size: 14px;
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #game-selector:hover {
+      border-color: #ffcc00;
     }
     #game-container {
       width: 100%;
-      height: 100%;
+      height: calc(100% - 50px); /* Subtract menu bar height */
       max-width: 960px;
       max-height: 640px;
     }
@@ -28,27 +55,46 @@
 </head>
 <body>
 
+  <!-- 1. Selection Menu Banner -->
+  <div id="menu-bar">
+    <label for="game-selector">Select Game:</label>
+    <select id="game-selector">
+      <option value="abc.zip">Main Game (abc)</option>
+      <option value="abc1.zip">Game 1 (abc1)</option>
+      <option value="abc2.zip">Game 2 (abc2)</option>
+    </select>
+  </div>
+
+  <!-- 2. Screen Window Container -->
   <div id="game-container">
     <div id="game"></div>
   </div>
 
   <script>
+    // Read parameters from URL to allow direct linking if needed
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialGame = urlParams.get('game');
+    const selector = document.getElementById('game-selector');
+
+    // Auto-set the dropdown value based on URL parameters
+    if (initialGame === 'abc1') selector.value = 'abc1.zip';
+    else if (initialGame === 'abc2') selector.value = 'abc2.zip';
+    else selector.value = 'abc.zip';
+
+    // Global EmulatorJS variables setup
     EJS_player = '#game';
-    EJS_core = 'gba';                 // Loads the mGBA core [1]
+    EJS_core = 'gba'; 
+    EJS_gameUrl = selector.value; // Loads chosen entry from selection dropdown
     EJS_startOnLoaded = true;
+    EJS_pathtodata = 'https://emulatorjs.org';
 
-    // 🌟 CHOOSE THE RIGHT OPTION FOR YOUR FILENAME BELOW:
-    // Option A: If your file on GitHub is named "abc.zip" use this line:
-    EJS_gameUrl = 'abc.zip';         
-    
-    // Option B: If your file on GitHub is just named "abc" with NO extension, uncomment this line:
-    // EJS_gameUrl = 'abc';         
-
-    // 🚀 FIXED: Pull the system engine cores from the official cloud CDN [1]
-    EJS_pathtodata = 'https://emulatorjs.org';         
+    // Trigger reload when user selects a different game from dropdown menu
+    selector.addEventListener('change', function() {
+        let cleanName = this.value.replace('.zip', '');
+        window.location.href = window.location.origin + window.location.pathname + '?game=' + cleanName;
+    });
   </script>
   
-  <!-- 🚀 FIXED: Load the main player library code script from the cloud mirror -->
   <script src="https://emulatorjs.orgloader.js"></script>
 
 </body>
