@@ -24,12 +24,16 @@
 
   <script>
     EJS_player = '#game';
-    EJS_core = 'gba';          // <--- Set core to GBC for Game Boy Color
-    EJS_gameUrl = 'toy.zip';   // Matches your uploaded zip file name
+    EJS_core = 'gbc';
+    EJS_gameUrl = 'toy.zip';
     EJS_gameID = 11;
-    EJS_pathtodata = 'data/';
+    
+    // Direct EmulatorJS to fetch all cores from the CDN
+    EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
   </script>
-  <script src="data/loader.js"></script>
+
+  <!-- Load the script directly from the CDN -->
+  <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
 
 </body>
 </html>
